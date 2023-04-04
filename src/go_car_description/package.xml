@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>go_car_description</name>
+  <version>1.0.0</version>
+  <description>This package contains files describing simulated model for Go Car in Gazebo</description>
+
+  <maintainer email="lion@todo.todo">lion</maintainer>
+  <license>TODO</license>
+
+  
+</package>
