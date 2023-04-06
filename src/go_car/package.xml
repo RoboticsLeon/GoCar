@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>go_car</name>
+  <version>0.0.0</version>
+  <description>Metapackage to gather all go_car related packages</description>
+
+  <maintainer email="sl.doncel@pm.me">lion</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+
+</package>

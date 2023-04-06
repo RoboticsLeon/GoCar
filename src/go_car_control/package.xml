@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>go_car_control</name>
+  <version>0.0.0</version>
+  <description>Package grouping all control related files</description>
+
+  <maintainer email="sl.doncel@pm.me">lion</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
