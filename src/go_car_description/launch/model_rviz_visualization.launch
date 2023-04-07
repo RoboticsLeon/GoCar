@@ -1,6 +1,6 @@
 <launch>
     <!-- Parsing xacro and setting robot_description parameter -->
-    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car.urdf.xacro' robot_name:='GoCar'"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='GoCar'"/>
     <!-- Starting Joint state publisher node which will publish the joint values -->
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
     <!-- Starting robot state publish which will publish tf -->

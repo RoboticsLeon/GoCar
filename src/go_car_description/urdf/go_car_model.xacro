@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<robot name="test_robot"
+  xmlns:xacro="test">
+
+  <xacro:include filename="$(find go_car_description)/urdf/include/params.xacro"/>
+  <xacro:include filename="$(find go_car_description)/urdf/include/snippets.xacro"/>
+  <xacro:include filename="$(find go_car_description)/urdf/include/links.xacro"/>
+
+  <!-- First tf level -->
+  <link name="base_link"/>
+  <joint name="base_to_base_footprint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0.0 0.0 ${distanceZ_CM_to_ground}" rpy="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="base_to_left_steering_column" type="revolute">
+    <parent link="base_link"/>
+    <child link="left_steering_column_link"/>
+    <axis xyz="0.0 0.0 1"/>
+    <origin xyz="${distanceX_CM_to_front_wheel_axis} ${distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
+    <limit lower="${-5/9*pi/5}" upper="${5/9*pi/5}" effort="25000" velocity="5"/>
+  </joint>
+  <joint name="base_to_right_steering_column" type="revolute">
+    <parent link="base_link"/>
+    <child link="right_steering_column_link"/>
+    <axis xyz="0.0 0.0 1"/>
+    <origin xyz="${distanceX_CM_to_front_wheel_axis} ${-distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
+    <limit lower="${-5/9*pi/2}" upper="${5/9*pi/2}" effort="25000" velocity="5"/>
+  </joint>
+  <joint name="base_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+
+  <!-- Second tf level -->
+  <link name="base_footprint"/>
+
+  <xacro:insert_block name="chassis_link"/>
+  <joint name="chassis_to_rear_left_wheel" type="continuous">
+    <parent link="chassis_link"/>
+    <child link="rear_left_wheel_link"/>
+    <origin xyz="${distanceX_CM_to_rear_wheel_axis} ${distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="500" velocity="200"/>
+  </joint>
+  <joint name="chassis_to_rear_right_wheel" type="continuous">
+    <parent link="chassis_link"/>
+    <child link="rear_right_wheel_link"/>
+    <origin xyz="${distanceX_CM_to_rear_wheel_axis} ${-distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="500" velocity="200"/>
+  </joint>
+
+  <xacro:steering_column_link RL="left"/>
+  <xacro:steering_column_link RL="right"/>
+  <joint name="steering_column_to_front_left_wheel" type="continuous">
+    <parent link="left_steering_column_link"/>
+    <child link="front_left_wheel_link"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="500" velocity="200"/>
+  </joint>
+  <joint name="steering_column_to_front_right_wheel" type="continuous">
+    <parent link="right_steering_column_link"/>
+    <child link="front_right_wheel_link"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit effort="500" velocity="200"/>
+  </joint>
+
+  <!-- Third tf level -->
+  <xacro:wheel_link FR="rear" RL="left"/>
+  <xacro:wheel_link FR="rear" RL="right"/>
+  <xacro:wheel_link FR="front" RL="left"/>
+  <xacro:wheel_link FR="front" RL="right"/>
+
+  <!-- Gazebo -->
+  <xacro:include filename="$(find go_car_description)/urdf/include/gazebo.xacro"/>
+
+</robot>

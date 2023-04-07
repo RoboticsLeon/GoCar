@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="properties_xacro">
+
+    <xacro:property name="chassis_link">
+        <link name="chassis_link">
+            <inertial>
+                <mass value="${chassis_mass}"/>
+                <inertia ixx="${chassis_mass_ixx}" ixy="0.0" ixz="${chassis_mass_ixz}" iyy="${chassis_mass_iyy}" iyz="0.0" izz="${chassis_mass_izz}"/>
+            </inertial>
+            <collision>
+                <origin xyz="0.25 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+                </geometry>
+            </collision>
+            <visual>
+                <geometry>
+                    <mesh filename="package://go_car_description/meshes/car.dae"/>
+                </geometry>
+            </visual>
+        </link>
+    </xacro:property>
+
+    <xacro:macro name="steering_column_link" params="RL">        <!-- RL:'right','left' -->
+        <link name="${RL}_steering_column_link">
+            <inertial>
+                <mass value="${steering_column_weight}"/>
+                <xacro:inertial_tensor_cylinder M="${steering_column_weight}" R="${steering_column_radius}" L="${steering_column_length}"/>
+            </inertial>
+        </link>
+    </xacro:macro>
+
+    <xacro:macro name="wheel_link" params="FR RL">        <!-- FR:'front','rear' | RL:'right','left' -->
+        <link name="${FR}_${RL}_wheel_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="${-pi/2} 0.0 0.0"/>
+                <mass value="${tyre_mass}"/>
+                <xacro:inertial_tensor_cylinder M="${tyre_mass}" R="${tyre_radius}" L="${tyre_width}"/>
+            </inertial>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="${-pi/2} 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="${tyre_radius}" length="${tyre_width}"/>
+                </geometry>
+            </collision>
+            <visual>
+                <xacro:if value="${RL == 'left'}">
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}"/>
+                </xacro:if>
+                <xacro:if value="${RL == 'right'}">
+                    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${-pi/2}"/>
+                </xacro:if>
+                <geometry>
+                    <mesh filename="package://go_car_description/meshes/wheel.dae"/>
+                </geometry>
+            </visual>
+        </link>
+    </xacro:macro>
+
+</robot>

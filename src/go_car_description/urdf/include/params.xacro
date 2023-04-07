@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="macros_xacro">
+
+    <xacro:property name="base_height" value="1.0639"/>
+    <xacro:property name="base_collision_height" value="1.3639"/>
+    <xacro:property name="base_mass" value="2050"/>
+    <xacro:property name="base_mass_ixx" value="647"/>
+    <xacro:property name="base_mass_iyy" value="3291"/>
+    <xacro:property name="base_mass_izz" value="3360"/>
+    <xacro:property name="base_mass_ixz" value="-31"/>
+    <xacro:property name="tyre_x" value="1.41"/>
+    <xacro:property name="tyre_y" value="0.765"/>
+    <xacro:property name="tyre_length" value="0.229"/>
+    <xacro:property name="tyre_r" value="0.66"/>
+    <xacro:property name="tyre_radius" value="0.356"/>
+    <xacro:property name="tyre_mass" value="40"/>
+    <xacro:property name="tyre_mass_ixx" value="2.0"/>
+    <xacro:property name="tyre_mass_iyy" value="2.0"/>
+    <xacro:property name="tyre_mass_izz" value="2.0"/>
+    <xacro:property name="car_height" value="1.4478"/>
+    <xacro:property name="car_to_bumper" value="2.4"/>
+    <xacro:property name="front_bumper_height" value="${car_height/2}"/>
+    <xacro:property name="sensor_box" value="0.25"/>
+    <xacro:property name="sensor_box2" value="0.01"/>
+    <xacro:property name="camera_box" value="0.1"/>
+    <xacro:property name="tyre_height" value="-0.696"/>
+    <xacro:property name="str_length" value="0.01"/>
+    <xacro:property name="str_radius" value="0.1"/>
+    <xacro:property name="str_angle" value="0.6"/>
+    <xacro:property name="car_width" value="1.301"/>
+
+    <xacro:property name="chassis_height" value="1.5"/>
+    <xacro:property name="chassis_length" value="5"/>
+    <xacro:property name="chassis_width" value="2.2"/>
+    <xacro:property name="chassis_mass" value="2050"/>
+    <xacro:property name="chassis_mass_ixx" value="647"/>
+    <xacro:property name="chassis_mass_iyy" value="3291"/>
+    <xacro:property name="chassis_mass_izz" value="3360"/>
+    <xacro:property name="chassis_mass_ixz" value="-31"/>
+    <xacro:property name="steering_column_weight" value="2.0"/>
+    <xacro:property name="steering_column_radius" value="0.05"/>
+    <xacro:property name="steering_column_length" value="0.5"/>
+    <xacro:property name="distanceZ_CM_to_ground" value="-0.9"/>
+    <xacro:property name="distanceX_CM_to_rear_wheel_axis" value="-1.15"/>
+    <xacro:property name="distanceX_CM_to_front_wheel_axis" value="1.65"/>
+    <xacro:property name="distanceY_CM_to_wheel_center" value="0.8"/>
+    <xacro:property name="distanceZ_CM_to_wheel_center" value="-0.5"/>
+    <xacro:property name="distanceX_CM_to_front_axis" value="1.7"/>
+    <xacro:property name="wheelbase" value="${distanceX_CM_to_front_wheel_axis-distanceX_CM_to_rear_wheel_axis}"/>
+    <xacro:property name="axle_track" value="${2*distanceY_CM_to_wheel_axis}"/>
+    <xacro:property name="tyre_mass" value="40"/>
+    <xacro:property name="tyre_radius" value="0.356"/>
+    <xacro:property name="tyre_width" value="0.229"/>
+
+</robot>

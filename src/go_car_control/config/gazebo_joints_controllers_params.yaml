@@ -1,20 +1,21 @@
 go_car:
   joint_state_controller:
     type: joint_state_controller/JointStateController
-    publish_rate: 50  
-  joint1_velocity_controller:
+    publish_rate: 50
+  velocity_controller_right:
     type: effort_controllers/JointVelocityController
-    joint: back_left_wheel_joint
+    joint: chassis_to_rear_right_wheel
     pid: {p: 2000.0, i: 0.5, d: 10.0, i_clamp_min: -100.0, i_clamp_max: 100.0}
-  joint2_velocity_controller:
+  velocity_controller_left:
     type: effort_controllers/JointVelocityController
-    joint: back_right_wheel_joint
-    pid: {p: 200.0, i: 0.5, d: 10.0, i_clamp_min: -100.0, i_clamp_max: 100.0}
-  front_left_steering_position_controller:
-    type: effort_controllers/JointPositionController
-    joint: front_left_steering_joint
-    pid: {p: 2000.0, i: 0.1, d: 0.0, i_clamp_min: -100.0, i_clamp_max: 10.0}
-  front_right_steering_position_controller:
-    type: effort_controllers/JointPositionController
-    joint: front_right_steering_joint
-    pid: {p: 2000.0, i: 0.1, d: 0.0, i_clamp_min: -100.0, i_clamp_max: 10.0}
+    joint: chassis_to_rear_left_wheel
+    pid: {p: 2000.0, i: 0.5, d: 10.0, i_clamp_min: -100.0, i_clamp_max: 100.0}
+  steering_controller:
+    type: effort_controllers/JointGroupPositionController
+    joints:
+      - base_to_left_steering_column
+      - base_to_right_steering_column
+    base_to_left_steering_column:
+      pid: {p: 1000000.0, i: 0.0, d: 0.0, i_clamp_min: -100.0, i_clamp_max: 100.0}
+    base_to_right_steering_column:
+      pid: {p: 1000000.0, i: 0.0, d: 0.0, i_clamp_min: -100.0, i_clamp_max: 100.0}

@@ -12,8 +12,8 @@
         <arg name="headless" value="false"/>
     </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car.urdf.xacro' robot_name:='go_car'"/>
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x -0.08 -y -0.09 -z 0.785"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car'"/>
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x -0.08 -y -0.09 -z 1"/>
 
     <include file="$(find go_car_control)/launch/load_gazebo_joints_controllers.launch"/>
 
