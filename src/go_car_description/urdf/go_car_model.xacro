@@ -19,14 +19,14 @@
     <child link="left_steering_column_link"/>
     <axis xyz="0.0 0.0 1"/>
     <origin xyz="${distanceX_CM_to_front_wheel_axis} ${distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
-    <limit lower="${-5/9*pi/5}" upper="${5/9*pi/5}" effort="25000" velocity="5"/>
+    <limit lower="${-5/9*pi/2}" upper="${5/9*pi/2}" effort="15000" velocity="0.25"/>
   </joint>
   <joint name="base_to_right_steering_column" type="revolute">
     <parent link="base_link"/>
     <child link="right_steering_column_link"/>
     <axis xyz="0.0 0.0 1"/>
     <origin xyz="${distanceX_CM_to_front_wheel_axis} ${-distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
-    <limit lower="${-5/9*pi/2}" upper="${5/9*pi/2}" effort="25000" velocity="5"/>
+    <limit lower="${-5/9*pi/2}" upper="${5/9*pi/2}" effort="15000" velocity="0.25"/>
   </joint>
   <joint name="base_to_chassis" type="fixed">
     <parent link="base_link"/>
