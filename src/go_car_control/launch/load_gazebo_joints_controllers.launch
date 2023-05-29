@@ -1,7 +1,6 @@
+<?xml version="1.0"?>
 <launch>
     <!-- Params -->
     <rosparam file="$(find go_car_control)/config/gazebo_joints_controllers_params.yaml" command="load"/>
 
-    <!-- Nodes -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" ns="/go_car" respawn="false" output="screen" args="velocity_controller_right velocity_controller_left steering_controller  joint_state_controller"/>
 </launch>

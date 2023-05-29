@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+  <world name="default">
+
+    <gui>
+      <camera name="user_camera">
+        <track_visual>
+          <name>go_car</name>
+          <static>true</static>
+          <use_model_frame>true</use_model_frame>
+          <xyz> -8 0 3 </xyz>
+          <inherit_yaw>true</inherit_yaw>
+        </track_visual>
+      </camera>
+    </gui>
+    
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <plugin name="beacons_sync_world_plugin" filename="libbeacons_sync_world_plugin.so">
+      <update_rate>60</update_rate>
+    </plugin>
+  </world>
+</sdf>

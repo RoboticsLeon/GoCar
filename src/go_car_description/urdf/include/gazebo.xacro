@@ -4,8 +4,8 @@
 
   <!-- Friction parameters -->
   <gazebo reference="rear_right_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
+    <mu1>1</mu1>
+    <mu2>1</mu2>
     <kp>10000000</kp>
     <kd>1</kd>
     <minDepth>0.01</minDepth>
@@ -13,8 +13,8 @@
   </gazebo>
 
   <gazebo reference="rear_left_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
+    <mu1>1</mu1>
+    <mu2>1</mu2>
     <kp>10000000</kp>
     <kd>1</kd>
     <minDepth>0.01</minDepth>
@@ -22,8 +22,8 @@
   </gazebo>
 
   <gazebo reference="front_right_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
+    <mu1>1</mu1>
+    <mu2>1</mu2>
     <kp>10000000</kp>
     <kd>1</kd>
     <minDepth>0.01</minDepth>
@@ -31,8 +31,8 @@
   </gazebo>
 
   <gazebo reference="front_left_wheel_link">
-    <mu1>10000000</mu1>
-    <mu2>10000000</mu2>
+    <mu1>1</mu1>
+    <mu2>1</mu2>
     <kp>10000000</kp>
     <kd>1</kd>
     <minDepth>0.01</minDepth>
@@ -102,15 +102,14 @@
 
   <!-- Plugins -->
   <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <!-- <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/$(arg robot_name)</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-    </plugin>
-  </gazebo>
+    </plugin> -->
+    <plugin name="ackermann_control_plugin" filename="libackermann_control_plugin.so"/>
 
-  <gazebo>
     <plugin filename="libgazebo_ros_joint_state_publisher.so" name="joint_state_publisher">
-      <jointName>steering_column_to_front_left_wheel, steering_column_to_front_right_wheel</jointName>
+      <jointName>chassis_to_rear_left_wheel, chassis_to_rear_right_wheel, base_to_left_steering_column, base_to_right_steering_column</jointName>
       <updateRate>50.0</updateRate>
       <robotNamespace>/$(arg robot_name)</robotNamespace>
       <alwaysOn>true</alwaysOn>
