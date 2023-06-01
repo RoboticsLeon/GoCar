@@ -1,5 +1,5 @@
-#include "gamepad_controller_adapter_ros_wrapper.hpp"
-#include "gamepad_controller_adapter.hpp"
+#include "gamepad_driver.hpp"
+#include "gamepad_driver_ros_wrapper.hpp"
 
 go_car_manual_control::car_control_command output_msg;
 

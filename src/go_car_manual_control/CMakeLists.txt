@@ -12,13 +12,11 @@ catkin_package(CATKIN_DEPENDS message_runtime)
 
 include_directories(include/gamepad include/keyboard ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
 
-add_executable(gamepad_controller_adapter src/gamepad/gamepad_controller_adapter.cpp src/gamepad/gamepad_controller_adapter_ros_wrapper.cpp)
-add_dependencies(gamepad_controller_adapter go_car_manual_control_generate_messages_cpp)
-target_link_libraries(gamepad_controller_adapter ${catkin_LIBRARIES})
+add_executable(gamepad_driver src/gamepad/gamepad_driver.cpp src/gamepad/gamepad_driver_ros_wrapper.cpp)
+add_dependencies(gamepad_driver go_car_manual_control_generate_messages_cpp)
+target_link_libraries(gamepad_driver ${catkin_LIBRARIES})
 
-add_executable(keyboard_listener src/keyboard/keyboard_listener.cpp)
-target_link_libraries(keyboard_listener ${catkin_LIBRARIES})
+add_executable(keyboard_driver src/keyboard/keyboard_driver_ros_wrapper.cpp src/keyboard/keyboard_driver.cpp)
+add_dependencies(gamepad_driver go_car_manual_control_generate_messages_cpp)
+target_link_libraries(keyboard_driver ${catkin_LIBRARIES})
 
-add_executable(keyboard_input_processor src/keyboard/keyboard_input_processor.cpp)
-add_dependencies(keyboard_input_processor go_car_manual_control_generate_messages_cpp)
-target_link_libraries(keyboard_input_processor ${catkin_LIBRARIES})
