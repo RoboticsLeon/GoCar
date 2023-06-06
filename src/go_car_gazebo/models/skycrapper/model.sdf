@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="skycrapper">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>5</radius>
+            <length>40</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>5</radius>
+            <length>40</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://skycrapper/materials/scripts</uri>
+            <uri>model://skycrapper/materials/textures</uri>
+            <name>skycrapper/Image</name>
+          </script>
+          <lightning>false</lightning>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,4 +1,0 @@
-float64 right_steering_column
-float64 left_steering_column
-float64 right_rear_traction
-float64 left_rear_traction

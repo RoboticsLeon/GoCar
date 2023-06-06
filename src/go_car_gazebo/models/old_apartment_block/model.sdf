@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="old_apartment_block">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>20 10 10</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="block">
+        <geometry>
+          <box>
+            <size>20 10 10</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://old_apartment_block/materials/scripts</uri>
+            <uri>model://old_apartment_block/materials/textures</uri>
+            <name>old_apartment_facade/Image</name>
+          </script>
+          <lightning>false</lightning>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+      <!-- <visual name="ceil">
+        <pose>0 0 5.01 0 0 0</pose>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>20 10</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://old_apartment_block/materials/scripts</uri>
+            <uri>model://old_apartment_block/materials/textures</uri>
+            <name>concrete/Image</name>
+          </script>
+          <lightning>false</lightning>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual> -->
+    </link>
+  </model>
+</sdf>

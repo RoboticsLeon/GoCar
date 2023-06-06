@@ -1,0 +1,14 @@
+material roadmap_floor/Image
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture roadmap_floor.png
+      }
+    }
+  }
+}

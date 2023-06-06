@@ -1,17 +1,77 @@
 <?xml version="1.0" ?>
-<sdf version="1.5">
+<sdf version="1.7">
+
   <world name="default">
+    <scene>
+      <ambient>1 1 1 1</ambient>
+      <background>1 1 1 1</background>
+      <sky>
+        <clouds>
+          <humidity>0.5</humidity>
+        </clouds>
+      </sky>
+      <grid>false</grid>
+    </scene>
+
     <!-- A global light source -->
     <include>
       <uri>model://sun</uri>
     </include>
-    <!-- A ground plane -->
+
+    <!-- <light name="SunLight1" type="directional">
+      <pose>100 100 100 0 0 0</pose>
+      <direction>-1 -1 -1</direction>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <light name="SunLight2" type="directional">
+      <pose>-100 100 100 0 0 0</pose>
+      <direction>1 -1 -1</direction>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <light name="SunLight3" type="directional">
+      <pose>-100 -100 100 0 0 0</pose>
+      <direction>1 1 -1</direction>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <light name="SunLight4" type="directional">
+      <pose>100 -100 100 0 0 0</pose>
+      <direction>-1 1 -1</direction>
+      <cast_shadows>false</cast_shadows>
+    </light> -->
+
+    <gui>
+      <fullscreen>true</fullscreen>
+      <camera name="user_camera">
+        <track_visual>
+          <name>go_car</name>
+          <static>true</static>
+          <use_model_frame>true</use_model_frame>
+          <xyz> -8 0 3 </xyz>
+          <inherit_yaw>true</inherit_yaw>
+        </track_visual>
+      </camera>
+    </gui>
+
     <include>
-      <uri>model://ground_plane</uri>
+      <uri>model://roadmap_floor</uri>
+      <name>roadmap_floor</name>
+      <pose>0 0 0 0 0 0</pose>
     </include>
-    <!-- A highway -->
+
     <include>
-      <uri>model://test</uri>
+      <uri>model://old_apartment_block</uri>
+      <name>old_apartment_block</name>
+      <pose>10 0 20 0 0 0</pose>
     </include>
+
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
   </world>
 </sdf>

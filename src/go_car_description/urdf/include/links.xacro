@@ -9,7 +9,7 @@
                 <inertia ixx="${chassis_mass_ixx}" ixy="0.0" ixz="${chassis_mass_ixz}" iyy="${chassis_mass_iyy}" iyz="0.0" izz="${chassis_mass_izz}"/>
             </inertial>
             <collision>
-                <origin xyz="0.25 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <origin xyz="0.25 0.0 0.2" rpy="0.0 0.0 0.0"/>
                 <geometry>
                     <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
                 </geometry>

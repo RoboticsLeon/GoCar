@@ -7,7 +7,7 @@
 namespace controller_adapter {
 
 constexpr double MAX_STEERING_ANGLE = 0.8;
-constexpr double MAX_SPEED = 20;
+constexpr double MAX_SPEED = 100;
 
 enum class Gears {
   Reverse = -1,

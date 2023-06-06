@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <env name="GAZEBO_PLUGIN_PATH" value="$HOME/gazebo_plugin_tutorial/build:$GAZEBO_PLUGIN_PATH"/>
-
-
-</launch>

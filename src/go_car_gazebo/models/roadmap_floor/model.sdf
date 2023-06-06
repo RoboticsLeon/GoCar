@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="roadmap_floor">
+    <static>true</static>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>100 100</size>
+          </plane>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>25</mu>
+              <mu2>25</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>300 300</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://roadmap_floor/materials/scripts</uri>
+            <uri>model://roadmap_floor/materials/textures</uri>
+            <name>roadmap_floor/Image</name>
+          </script>
+          <lightning>false</lightning>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

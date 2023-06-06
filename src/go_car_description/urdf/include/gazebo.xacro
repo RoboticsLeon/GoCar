@@ -40,23 +40,23 @@
   </gazebo>
 
   <!-- Suspension parameters -->
-  <gazebo reference="right_steering_column_link">
+  <!-- <gazebo reference="right_steering_column_link">
     <mu1>0.6</mu1>
     <mu2>0.5</mu2>
     <kp>1000000</kp>
     <kd>100</kd>
     <minDepth>0.01</minDepth>
     <maxVel>10.0</maxVel>
-  </gazebo>
+  </gazebo> -->
 
-  <gazebo reference="left_steering_column_link">
+  <!-- <gazebo reference="left_steering_column_link">
     <mu1>0.6</mu1>
     <mu2>0.5</mu2>
     <kp>1000000</kp>
     <kd>100</kd>
     <minDepth>0.01</minDepth>
     <maxVel>10.0</maxVel>
-  </gazebo>
+  </gazebo> -->
 
   <!-- Plugins -->
   <gazebo>

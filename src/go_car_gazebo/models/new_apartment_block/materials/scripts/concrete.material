@@ -1,0 +1,14 @@
+material concrete/Image
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture concrete.jpg
+      }
+    }
+  }
+}
