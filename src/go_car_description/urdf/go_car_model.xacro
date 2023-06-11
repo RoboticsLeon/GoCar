@@ -30,7 +30,7 @@
   </joint>
 
   <!-- Second tf level -->
-  <xacro:insert_block name="chassis_link"/>
+  <xacro:chassis_link details="$(arg details)"/>
   <joint name="chassis_to_rear_left_wheel" type="continuous">
     <parent link="chassis_link"/>
     <child link="rear_left_wheel_link"/>
@@ -66,6 +66,16 @@
   <xacro:wheel_link FR="rear" RL="right"/>
   <xacro:wheel_link FR="front" RL="left"/>
   <xacro:wheel_link FR="front" RL="right"/>
+  <joint name="chassis_to_camera" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.0 0.0 1.2" rpy="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="chassis_to_lidar" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="lidar_link"/>
+    <origin xyz="0.0 0.0 1.4" rpy="0.0 0.0 0.0"/>
+  </joint>
 
   <!-- Gazebo -->
   <xacro:include filename="$(find go_car_description)/urdf/include/gazebo.xacro"/>

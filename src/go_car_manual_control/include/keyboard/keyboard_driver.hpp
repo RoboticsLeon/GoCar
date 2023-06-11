@@ -12,7 +12,7 @@
 namespace keyboard_driver {
 
 constexpr double MAX_STEERING_ANGLE = 0.8;
-constexpr double MAX_SPEED = 20;
+constexpr double MAX_SPEED = 50;
 constexpr int BUFFER_SIZE{64};
 constexpr int INPUT_DEVICE_ID_SELECTOR{1};
 

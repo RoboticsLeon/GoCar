@@ -1206,7 +1206,7 @@
       <pose>45.4845 43.3452 0 0 -0 0</pose>
     </model>
     <model name='suv'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 0 -1.5708</pose>
@@ -1358,7 +1358,7 @@
       <pose>14.5248 56.67 0 0 -0 0</pose>
     </model>
     <model name='pickup'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 0 -1.5708</pose>
@@ -2200,7 +2200,7 @@
       </joint>
     </model>
     <model name='hatchback'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 -0 1.5708</pose>
@@ -2240,7 +2240,7 @@
       <pose>33.7669 70.1555 0 0 -0 0</pose>
     </model>
     <model name='hatchback_blue'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 -0 1.5708</pose>
@@ -2280,7 +2280,7 @@
       <pose>30.5996 74.655 0 0 -0 0</pose>
     </model>
     <model name='hatchback_red'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 -0 1.5708</pose>
@@ -2320,7 +2320,7 @@
       <pose>31.4962 65.1075 0 0 -0 0</pose>
     </model>
     <model name='hatchback_blue_clone'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 -0 1.5708</pose>
@@ -2360,7 +2360,7 @@
       <pose>39.9706 73.9364 0 0 0 -1.47776</pose>
     </model>
     <model name='pickup_clone'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 0 -1.5708</pose>
@@ -2492,10 +2492,10 @@
       <pose>-16.2949 35.989 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>1197 782000000</sim_time>
-      <real_time>910 502698662</real_time>
-      <wall_time>1685919746 740911722</wall_time>
-      <iterations>906452</iterations>
+      <sim_time>0</sim_time>
+      <real_time>0</real_time>
+      <wall_time>0</wall_time>
+      <iterations>0</iterations>
       <model name='AirportBench'>
         <pose>-15.8812 57.7309 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -2876,52 +2876,6 @@
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='go_car'>
-        <pose>-0.086888 -0.089614 0.845721 0 -2.9e-05 -0.000366</pose>
-        <scale>1 1 1</scale>
-        <link name='base_link'>
-          <pose>-0.086888 -0.089614 0.845721 0 -2.9e-05 -0.000366</pose>
-          <velocity>2e-06 0 9.3e-05 0 2e-06 0</velocity>
-          <acceleration>-0 -0 0 0 -0 0</acceleration>
-          <wrench>-0 -0 0 0 -0 0</wrench>
-        </link>
-        <link name='front_left_wheel_link'>
-          <pose>1.56342 0.709782 0.345775 -1e-06 -0.004679 -0.000348</pose>
-          <velocity>-0 -0 0.000116 1e-06 -1e-06 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='front_right_wheel_link'>
-          <pose>1.56283 -0.890218 0.345775 1e-06 -0.005863 -0.000347</pose>
-          <velocity>-1e-06 -0 0.000116 0 -2e-06 0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
-        </link>
-        <link name='left_steering_column_link'>
-          <pose>1.56342 0.709782 0.345778 -1e-06 -2.9e-05 -0.000348</pose>
-          <velocity>-1e-06 -0 0.000127 1e-06 2e-06 0</velocity>
-          <acceleration>0 0 0 -0.020087 0.000892 9e-06</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='rear_left_wheel_link'>
-          <pose>-1.23658 0.710807 0.345687 -0 -0.006093 -0.000366</pose>
-          <velocity>1e-06 0 9.5e-05 0 2e-06 0</velocity>
-          <acceleration>0 0 -0 0 -0 0</acceleration>
-          <wrench>0 0 -0 0 -0 0</wrench>
-        </link>
-        <link name='rear_right_wheel_link'>
-          <pose>-1.23717 -0.889193 0.345687 0 -0.006823 -0.000366</pose>
-          <velocity>1e-06 0 9.5e-05 0 2e-06 0</velocity>
-          <acceleration>0 -0 0 0 -0 0</acceleration>
-          <wrench>0 -0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_steering_column_link'>
-          <pose>1.56283 -0.890218 0.345766 0 -2.9e-05 -0.000347</pose>
-          <velocity>1e-06 0 8e-05 0 2e-06 0</velocity>
-          <acceleration>-0 -0 0 -0.021299 0.00034 1e-05</acceleration>
-          <wrench>-0 -0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='grocery_store'>
@@ -3746,7 +3700,7 @@
       <pose>-6.42593 65.4991 0 0 -0 0</pose>
     </model>
     <model name='hatchback_red_0'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='collision'>
           <pose>0 0 0 0 -0 1.5708</pose>
@@ -3942,7 +3896,7 @@
       <static>0</static>
     </model>
     <model name='casual_female'>
-      <static>1</static>
+      <static>0</static>
       <link name='link'>
         <collision name='box'>
           <pose>0 0 0.9 0 -0 0</pose>
@@ -4175,7 +4129,7 @@
       <pose>-34.4249 -76.8873 0 0 -0 0</pose>
     </model>
     <model name='Ambulance2'>
-      <static>1</static>
+      <static>0</static>
       <link name='body'>
         <pose>0 0 0 0 -0 0</pose>
         <visual name='visual'>
@@ -4308,7 +4262,7 @@
       <pose>14.9312 -72.8983 0 0 -0 0</pose>
     </model>
     <model name='Nurse'>
-      <static>1</static>
+      <static>0</static>
       <link name='body'>
         <pose>0 0 0 0 -0 0</pose>
         <visual name='visual'>
@@ -4345,7 +4299,7 @@
       <pose>19.2228 -65.7792 0 0 -0 0</pose>
     </model>
     <model name='MaleVisitorOnPhone'>
-      <static>1</static>
+      <static>0</static>
       <link name='body'>
         <pose>0 0 0 0 -0 0</pose>
         <visual name='visual'>
@@ -4382,7 +4336,7 @@
       <pose>21.1456 -65.6837 0 0 -0 0</pose>
     </model>
     <model name='FemaleVisitor'>
-      <static>1</static>
+      <static>0</static>
       <link name='body'>
         <pose>0 0 0 0 -0 0</pose>
         <visual name='visual'>
@@ -7768,11 +7722,11 @@
       <pose>21.5258 -73.6929 0 0 -0 0</pose>
     </model>
     <model name='urban_straight_lights'>
-      <static>1</static>
+      <static>0</static>
       <frame name='urban_straight::__model__' attached_to='urban_straight::base'>
         <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       </frame>
-      <static>1</static>
+      <static>0</static>
       <link name='urban_straight::base'>
         <collision name='collision'>
           <pose>0 0 0 0 -0 0</pose>

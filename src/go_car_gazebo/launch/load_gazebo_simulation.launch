@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <launch>
     <arg name="world" default="city"/>
+    <arg name="details" default="quality"/>
+    <arg name="car_model" default="1"/>
 
     <!-- Adding third party models to Gazebo environment -->
     <env name="GAZEBO_MODEL_PATH" value="$(find go_car_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
@@ -16,13 +18,11 @@
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="headless" value="false"/>
-        <arg name="verbose" value="true"/>
+        <arg name="verbose" value="false"/>
     </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car'"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car' details:=$(arg details) car_model:=$(arg car_model)"/>
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x -0.08 -y -0.09 -z 1"/>
-
-    <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car'"/>
 
     <include file="$(find go_car_low_level_control)/launch/load_gazebo_joints_controllers.launch"/>
 

@@ -2,17 +2,24 @@
 
 <robot xmlns:xacro="properties_xacro">
 
-    <xacro:property name="chassis_link">
+    <xacro:macro name="chassis_link" params="details">
         <link name="chassis_link">
             <inertial>
                 <mass value="${chassis_mass}"/>
                 <inertia ixx="${chassis_mass_ixx}" ixy="0.0" ixz="${chassis_mass_ixz}" iyy="${chassis_mass_iyy}" iyz="0.0" izz="${chassis_mass_izz}"/>
             </inertial>
             <collision>
-                <origin xyz="0.25 0.0 0.2" rpy="0.0 0.0 0.0"/>
-                <geometry>
-                    <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
-                </geometry>
+                <xacro:if value="${details == 'quality'}">
+                    <geometry>
+                        <mesh filename="package://go_car_description/meshes/CarModel_reduced_for_collision.dae"/>
+                    </geometry>
+                </xacro:if>
+                <xacro:if value="${details == 'performance'}">
+                    <origin xyz="0.25 0.0 0.2" rpy="0.0 0.0 0.0"/>
+                    <geometry>
+                        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+                    </geometry>
+                </xacro:if>
             </collision>
             <visual>
                 <geometry>
@@ -20,7 +27,7 @@
                 </geometry>
             </visual>
         </link>
-    </xacro:property>
+    </xacro:macro>
 
     <xacro:macro name="steering_column_link" params="RL">        <!-- RL:'right','left' -->
         <link name="${RL}_steering_column_link">
@@ -57,5 +64,39 @@
             </visual>
         </link>
     </xacro:macro>
+
+    <link name="camera_link">
+        <collision>
+            <geometry>
+                <box size="0.5 0.5 0.5"/>
+            </geometry>
+        </collision>
+        <visual>
+            <geometry>
+                <box size="0.5 0.5 0.5"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <mass value="0.25"/>
+            <inertia ixx="1e-3" ixy="0" ixz="0" iyy="1e-3" iyz="0" izz="1e-3"/>
+        </inertial>
+    </link>
+
+    <link name="lidar_link">
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.2"/>
+            </geometry>
+        </collision>
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.2"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <mass value="0.25"/>
+            <inertia ixx="1e-3" ixy="0" ixz="0" iyy="1e-3" iyz="0" izz="1e-3"/>
+        </inertial>
+    </link>
 
 </robot>
