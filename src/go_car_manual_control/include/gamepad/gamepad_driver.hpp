@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <stdexcept>
 #include <utility>
 #include <vector>
@@ -21,10 +22,10 @@ enum class Gears {
 };
 
 // Addition operator overload
-Gears operator++(Gears &gear, int);
+void operator++(Gears &gear, int);
 
 // Subtraction operator overload
-Gears operator--(Gears &gear, int);
+void operator--(Gears &gear, int);
 
 std::pair<double, double>
 controller_input_processing(const std::vector<float> &axes,

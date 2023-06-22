@@ -3008,7 +3008,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='person_walking'>
+      <actor name='person_walking'>
         <pose>-59.3099 -63.6558 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
@@ -3017,7 +3017,7 @@
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
-      </model>
+      </actor>
       <model name='pickup'>
         <pose>19.403 66.3188 0 0 -0 1.5192</pose>
         <scale>1 1 1</scale>
@@ -8720,7 +8720,23 @@
       </link>
       <pose>-100.615 -56.5129 0 0 -0 0</pose>
     </model>
-    <model name='person_walking'>
+    <actor name='person_walking'>
+      <script>
+        <loop>true</loop>
+        <delay_start>0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+           <waypoint>
+              <time>0</time>
+              <pose>0 1 0 0 0 0</pose>
+           </waypoint>
+           <waypoint>
+              <time>5</time>
+              <pose>0 5 0 0 0 -0.1963</pose>
+           </waypoint>
+        </trajectory>
+      </script>
+      <!--<plugin name="actor_collision_plugin" filename="libActorCollisionsPlugin.so"/>-->
       <link name='link'>
         <inertial>
           <pose>0 0 0.95 0 -0 0</pose>
@@ -8789,6 +8805,6 @@
         <kinematic>0</kinematic>
       </link>
       <pose>-59.3099 -63.6558 0 0 -0 0</pose>
-    </model>
+    </actor>
   </world>
 </sdf>

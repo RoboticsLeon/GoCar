@@ -53,5 +53,6 @@
   <exec_depend>gazebo_ros</exec_depend>
   <export>
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros gazebo_resource_path="${prefix}/media"/>
   </export>
 </package>

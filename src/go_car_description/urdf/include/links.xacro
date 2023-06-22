@@ -66,16 +66,6 @@
     </xacro:macro>
 
     <link name="camera_link">
-        <collision>
-            <geometry>
-                <box size="0.5 0.5 0.5"/>
-            </geometry>
-        </collision>
-        <visual>
-            <geometry>
-                <box size="0.5 0.5 0.5"/>
-            </geometry>
-        </visual>
         <inertial>
             <mass value="0.25"/>
             <inertia ixx="1e-3" ixy="0" ixz="0" iyy="1e-3" iyz="0" izz="1e-3"/>
@@ -83,16 +73,6 @@
     </link>
 
     <link name="lidar_link">
-        <collision>
-            <geometry>
-                <cylinder radius="0.1" length="0.2"/>
-            </geometry>
-        </collision>
-        <visual>
-            <geometry>
-                <cylinder radius="0.1" length="0.2"/>
-            </geometry>
-        </visual>
         <inertial>
             <mass value="0.25"/>
             <inertia ixx="1e-3" ixy="0" ixz="0" iyy="1e-3" iyz="0" izz="1e-3"/>

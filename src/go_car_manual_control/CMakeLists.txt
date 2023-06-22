@@ -17,6 +17,6 @@ add_dependencies(gamepad_driver go_car_manual_control_generate_messages_cpp)
 target_link_libraries(gamepad_driver ${catkin_LIBRARIES})
 
 add_executable(keyboard_driver src/keyboard/keyboard_driver_ros_wrapper.cpp src/keyboard/keyboard_driver.cpp)
-add_dependencies(gamepad_driver go_car_manual_control_generate_messages_cpp)
+add_dependencies(keyboard_driver go_car_manual_control_generate_messages_cpp)
 target_link_libraries(keyboard_driver ${catkin_LIBRARIES})
 

@@ -6,27 +6,28 @@
   <xacro:include filename="$(find go_car_description)/urdf/include/params.xacro"/>
   <xacro:include filename="$(find go_car_description)/urdf/include/snippets.xacro"/>
   <xacro:include filename="$(find go_car_description)/urdf/include/links.xacro"/>
+  <xacro:include filename="$(find go_car_description)/urdf/include/sensors.xacro"/>
 
   <!-- First tf level -->
   <link name="base_link"/>
-  <joint name="base_to_left_steering_column" type="revolute">
+  <joint name="base_to_chassis" type="fixed">
     <parent link="base_link"/>
+    <child link="chassis_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="chassis_to_left_steering_column" type="revolute">
+    <parent link="chassis_link"/>
     <child link="left_steering_column_link"/>
     <axis xyz="0.0 0.0 1"/>
     <origin xyz="${distanceX_CM_to_front_wheel_axis} ${distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
     <limit lower="${-6/9*pi/2}" upper="${6/9*pi/2}" effort="100000" velocity="100000"/>
   </joint>
-  <joint name="base_to_right_steering_column" type="revolute">
-    <parent link="base_link"/>
+  <joint name="chassis_to_right_steering_column" type="revolute">
+    <parent link="chassis_link"/>
     <child link="right_steering_column_link"/>
     <axis xyz="0.0 0.0 1"/>
     <origin xyz="${distanceX_CM_to_front_wheel_axis} ${-distanceY_CM_to_wheel_center} ${distanceZ_CM_to_wheel_center}" rpy="0.0 0.0 0.0"/>
     <limit lower="${-6/9*pi/2}" upper="${6/9*pi/2}" effort="100000" velocity="100000"/>
-  </joint>
-  <joint name="base_to_chassis" type="fixed">
-    <parent link="base_link"/>
-    <child link="chassis_link"/>
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
   </joint>
 
   <!-- Second tf level -->
@@ -69,12 +70,12 @@
   <joint name="chassis_to_camera" type="fixed">
     <parent link="chassis_link"/>
     <child link="camera_link"/>
-    <origin xyz="0.0 0.0 1.2" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.8" rpy="0.0 0.0 0.0"/>
   </joint>
   <joint name="chassis_to_lidar" type="fixed">
     <parent link="chassis_link"/>
     <child link="lidar_link"/>
-    <origin xyz="0.0 0.0 1.4" rpy="0.0 0.0 0.0"/>
+    <origin xyz="${chassis_length/2+0.25} 0.0 -0.25" rpy="0.0 0.0 0.0"/>
   </joint>
 
   <!-- Gazebo -->
