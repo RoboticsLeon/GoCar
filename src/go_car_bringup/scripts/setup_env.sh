@@ -20,11 +20,6 @@ fi
 # Install packages dependencies
 rosdep install --from-paths src --ignore-src -r -y
 
-# Install cartographer building dependencies
-sudo apt-get update
-sudo apt-get install -y python3-wstool python3-rosdep ninja-build stow
-src/external_dependencies_packages/cartographer/scripts/install_abseil.sh
-
 # Ask for permission to read keyboard input for manual control
 read -p "Do you want to give access to keyboard input in order to enable manual control keyboard)(y/n) " keyboard_permission
 valid_answers_keyboard_access_permission_prompts=("y" "n")
