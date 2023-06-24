@@ -1,0 +1,9 @@
+[submodule "src/external_packages/hdl_graph_slam"]
+	path = src/external_packages/hdl_graph_slam
+	url = https://github.com/koide3/hdl_graph_slam.git
+[submodule "src/external_packages/ndt_omp"]
+	path = src/external_packages/ndt_omp
+	url = https://github.com/koide3/ndt_omp.git
+[submodule "src/external_packages/fast_gicp"]
+	path = src/external_packages/fast_gicp
+	url = https://github.com/SMRT-AIST/fast_gicp.git
