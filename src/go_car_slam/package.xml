@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>go_car_slam</name>
+  <version>0.0.0</version>
+  <description>The go_car_slam package</description>
+
+  <maintainer email="leon@todo.todo">leon</maintainer>
+
+
+  <license>TODO</license>
+
+
+  <exec_depend>hdl_graph_slam</exec_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

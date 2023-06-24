@@ -25,8 +25,8 @@ int main(int argc, char **argv) {
 
   ros::Rate r(50);
   while (ros::ok()) {
-    br.sendTransform(
-        tf::StampedTransform(transform, ros::Time::now(), "odom", "base_link"));
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "map",
+                                          "ground_truth"));
     ros::spinOnce();
     r.sleep();
   }

@@ -2,7 +2,7 @@
 <launch>
     <arg name="world" default="city"/>
     <arg name="details" default="quality"/>
-    <arg name="car_model" default="1"/>
+    <arg name="car_model" default="lincolm"/>
     <arg name="rviz_visualization" default="false"/>
 
     <!-- Fixing of Ignition Transport failure -->
@@ -29,7 +29,7 @@
     </node>
 
     <group if="$(arg rviz_visualization)">
-        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find go_car_bringup)/config/sensors_visualization.rviz" />
+        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find go_car_bringup)/config/sensors_visualization_3d.rviz" />
     </group>
 
 </launch>

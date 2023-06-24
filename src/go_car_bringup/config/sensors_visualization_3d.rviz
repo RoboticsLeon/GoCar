@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /RobotModel1
       Splitter Ratio: 0.5
     Tree Height: 686
   - Class: rviz/Selection
@@ -50,7 +51,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
+    - Alpha: 0.5
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -126,14 +127,14 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
+        Max Value: 0.00031259655952453613
+        Min Value: -0.2996874153614044
         Value: true
       Axis: Z
       Channel Name: intensity
       Class: rviz/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: Intensity
+      Color Transformer: AxisColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -150,6 +151,72 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_link:
+          Value: true
+        camera_link:
+          Value: false
+        chassis_link:
+          Value: false
+        front_left_wheel_link:
+          Value: false
+        front_right_wheel_link:
+          Value: false
+        ground_truth:
+          Value: true
+        keyframe:
+          Value: false
+        left_steering_column_link:
+          Value: false
+        lidar_link:
+          Value: false
+        map:
+          Value: true
+        odom:
+          Value: true
+        rear_left_wheel_link:
+          Value: false
+        rear_right_wheel_link:
+          Value: false
+        right_steering_column_link:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 10
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          ground_truth:
+            {}
+          odom:
+            base_link:
+              chassis_link:
+                camera_link:
+                  {}
+                left_steering_column_link:
+                  front_left_wheel_link:
+                    {}
+                lidar_link:
+                  {}
+                rear_left_wheel_link:
+                  {}
+                rear_right_wheel_link:
+                  {}
+                right_steering_column_link:
+                  front_right_wheel_link:
+                    {}
+            keyframe:
+              {}
+      Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
@@ -179,7 +246,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 113.70997619628906
+      Distance: 20.59307861328125
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -187,17 +254,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -5.089452266693115
-        Y: 1.2092785835266113
+        X: 0
+        Y: 0
         Z: 0
-      Focal Shape Fixed Size: true
+      Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 0.35539868474006653
       Target Frame: base_link
-      Yaw: 3.1304280757904053
+      Yaw: 3.105401039123535
     Saved: ~
 Window Geometry:
   Displays:
