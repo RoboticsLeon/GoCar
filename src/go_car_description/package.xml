@@ -7,5 +7,7 @@
   <maintainer email="lion@todo.todo">lion</maintainer>
   <license>TODO</license>
 
+  <exec_depend>robot_state_publisher</exec_depend>
+
 
 </package>

@@ -7,3 +7,18 @@
 [submodule "src/external_packages/fast_gicp"]
 	path = src/external_packages/fast_gicp
 	url = https://github.com/SMRT-AIST/fast_gicp.git
+[submodule "src/external_packages/catkin_simple"]
+	path = src/external_packages/catkin_simple
+	url = https://github.com/catkin/catkin_simple.git
+[submodule "src/external_packages/glog_catkin"]
+	path = src/external_packages/glog_catkin
+	url = https://github.com/ethz-asl/glog_catkin.git
+[submodule "src/external_packages/ethzasl_msf"]
+	path = src/external_packages/ethzasl_msf
+	url = https://github.com/ethz-asl/ethzasl_msf.git
+[submodule "gflags_catkin"]
+	path = gflags_catkin
+	url = https://github.com/ethz-asl/gflags_catkin.git
+[submodule "src/external_packages/gflags_catkin"]
+	path = src/external_packages/gflags_catkin
+	url = https://github.com/ethz-asl/gflags_catkin.git

@@ -16,7 +16,7 @@
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="headless" value="false"/>
-        <arg name="verbose" value="false"/>
+        <arg name="verbose" value="true"/>
     </include>
 
     <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car' details:=$(arg details) car_model:=$(arg car_model)"/>

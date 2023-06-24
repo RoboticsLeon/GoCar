@@ -15,15 +15,15 @@
         <arg name="rviz_visualization" value="$(arg rviz_visualization)"/>
     </include>
 
-    <!-- <include file="$(find go_car_manual_control)/launch/manual_control.launch">
+    <include file="$(find go_car_manual_control)/launch/manual_control.launch">
         <arg name="type" value="$(arg manual_control_type)"/>
-    </include> -->
+    </include>
 
     <node pkg="go_car_odom" type="ground_truth_tf_publisher" name="ground_truth_tf_publisher"/>
 
     <include file="$(find go_car_slam)/launch/hdl_graph_slam.launch"/>
 
     <!-- Defining parameters for move_base node -->
-    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"/>
+    <!-- <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"/> -->
 
 </launch>
