@@ -3,7 +3,8 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 686
   - Class: rviz/Selection
@@ -125,8 +126,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.1569029092788696
-        Min Value: -0.5430970788002014
+        Max Value: 9.932629585266113
+        Min Value: -1.9673702716827393
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -178,13 +179,15 @@ Visualization Manager:
         map:
           Value: true
         odom:
-          Value: true
+          Value: false
         rear_left_wheel_link:
           Value: false
         rear_right_wheel_link:
           Value: false
         right_steering_column_link:
           Value: false
+        world:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 10
       Name: TF
@@ -192,28 +195,29 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
+        world:
           ground_truth:
             {}
-          odom:
-            base_link:
-              chassis_link:
-                camera_link:
-                  {}
-                left_steering_column_link:
-                  front_left_wheel_link:
+          map:
+            odom:
+              base_link:
+                chassis_link:
+                  camera_link:
                     {}
-                lidar_link:
-                  {}
-                rear_left_wheel_link:
-                  {}
-                rear_right_wheel_link:
-                  {}
-                right_steering_column_link:
-                  front_right_wheel_link:
+                  left_steering_column_link:
+                    front_left_wheel_link:
+                      {}
+                  lidar_link:
                     {}
-            keyframe:
-              {}
+                  rear_left_wheel_link:
+                    {}
+                  rear_right_wheel_link:
+                    {}
+                  right_steering_column_link:
+                    front_right_wheel_link:
+                      {}
+              keyframe:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 0.699999988079071
@@ -332,7 +336,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 22.046283721923828
+      Distance: 33.972434997558594
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -348,9 +352,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3903988301753998
+      Pitch: 0.41539880633354187
       Target Frame: base_link
-      Yaw: 2.610400676727295
+      Yaw: 3.1754019260406494
     Saved: ~
 Window Geometry:
   Displays:
