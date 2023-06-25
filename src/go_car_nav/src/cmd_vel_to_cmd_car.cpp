@@ -2,6 +2,8 @@
 #include <go_car_manual_control/car_control_command.h>
 #include <ros/ros.h>
 
+ros::Publisher cmd_car_pub;
+
 void cmdVelCallback(const geometry_msgs::Twist::ConstPtr &cmd_vel_msg) {
   // Create a custom message of type cmd_car
   go_car_manual_control::car_control_command cmd_car_msg;
@@ -10,10 +12,6 @@ void cmdVelCallback(const geometry_msgs::Twist::ConstPtr &cmd_vel_msg) {
   cmd_car_msg.desired_speed = cmd_vel_msg->linear.x;
   cmd_car_msg.desired_steering_angle = cmd_vel_msg->angular.z;
 
-  // Publish the cmd_car message
-  ros::NodeHandle nh;
-  ros::Publisher cmd_car_pub =
-      nh.advertise<go_car_manual_control::car_control_command>("cmd_car", 10);
   cmd_car_pub.publish(cmd_car_msg);
 }
 
@@ -21,8 +19,9 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "cmd_vel_converter");
   ros::NodeHandle nh;
 
-  // Subscribe to the cmd_vel topic
   ros::Subscriber cmd_vel_sub = nh.subscribe("cmd_vel", 10, cmdVelCallback);
+  cmd_car_pub =
+      nh.advertise<go_car_manual_control::car_control_command>("cmd_car", 10);
 
   // Spin ROS
   ros::spin();

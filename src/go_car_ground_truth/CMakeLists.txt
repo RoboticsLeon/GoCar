@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(go_car_odom)
+project(go_car_ground_truth)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp

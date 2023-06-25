@@ -3,7 +3,6 @@
     <arg name="world" default="city"/>
     <arg name="details" default="quality"/>
     <arg name="car_model" default="lincolm"/>
-    <arg name="rviz_visualization" default="false"/>
 
     <!-- Fixing of Ignition Transport failure -->
     <env name="IGN_IP" value="127.0.0.1"/>
@@ -20,7 +19,7 @@
     </include>
 
     <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car' details:=$(arg details) car_model:=$(arg car_model)"/>
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x -0.08 -y -0.09 -z 1"/>
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x 37.75 -y -23.1 -z 1 -R 0 -P 0 -Y -1.54"/>
 
     <include file="$(find go_car_low_level_control)/launch/load_gazebo_joints_controllers.launch"/>
 
@@ -28,8 +27,7 @@
         <remap from="joint_states" to="/go_car/joint_states" />
     </node>
 
-    <group if="$(arg rviz_visualization)">
-        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find go_car_bringup)/config/sensors_visualization_3d.rviz" />
-    </group>
+    <node name="world_frame_publisher" pkg="tf" type="static_transform_publisher" args="37.75 -23.1 0.0 -1.54 0 0 world map 10"/>
+    <node pkg="go_car_ground_truth" type="ground_truth_tf_publisher" name="go_car_ground_truth_frame_publisher"/>
 
 </launch>

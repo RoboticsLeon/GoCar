@@ -4,26 +4,26 @@
     <arg name="details" default="quality"/>
     <!-- car_model options: lincolm, seat -->
     <arg name="car_model" default="lincolm"/>
-    <!-- manual_control_type options: keyboard, gamepad -->
-    <arg name="manual_control_type" default="keyboard"/>
+    <!-- manual_control_type options: keyboard, gamepad, autonomous -->
+    <arg name="control_type" default="keyboard"/>
     <arg name="rviz_visualization" default="false"/>
 
     <include file="$(find go_car_gazebo)/launch/load_gazebo_simulation.launch">
         <arg name="world" value="$(arg world_name)"/>
         <arg name="details" value="$(arg details)"/>
         <arg name="car_model" value="$(arg car_model)"/>
-        <arg name="rviz_visualization" value="$(arg rviz_visualization)"/>
     </include>
 
-    <include file="$(find go_car_manual_control)/launch/manual_control.launch">
-        <arg name="type" value="$(arg manual_control_type)"/>
-    </include>
+    <group if="$(arg rviz_visualization)">
+        <node type="rviz" name="rviz" pkg="rviz" args="-d $(find go_car_bringup)/config/sensors_visualization_3d.rviz" />
+    </group>
 
-    <node pkg="go_car_odom" type="ground_truth_tf_publisher" name="ground_truth_tf_publisher"/>
+    <group unless="$(eval control_type == 'autonomous')">
+        <include file="$(find go_car_manual_control)/launch/manual_control.launch">
+            <arg name="type" value="$(arg manual_control_type)"/>
+        </include>
+    </group>
 
-    <include file="$(find go_car_slam)/launch/hdl_graph_slam.launch"/>
-
-    <!-- Defining parameters for move_base node -->
-    <!-- <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"/> -->
+    <node name="wait_for_gazebo" pkg="go_car_bringup" type="delay_execution.sh" args="20 go_car_bringup postload.launch" output="screen"/>
 
 </launch>

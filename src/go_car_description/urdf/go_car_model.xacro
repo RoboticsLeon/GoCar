@@ -75,7 +75,7 @@
   <joint name="chassis_to_lidar" type="fixed">
     <parent link="chassis_link"/>
     <child link="lidar_link"/>
-    <origin xyz="${chassis_length/2+0.25} 0.0 -0.25" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.9" rpy="0.0 0.0 0.0"/>
   </joint>
 
   <!-- Gazebo -->

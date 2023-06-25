@@ -1,0 +1,29 @@
+local_costmap:
+   plugins:
+      - {name: laser_sensor_layer, type: "costmap_2d::VoxelLayer"}
+      - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+   laser_sensor_layer:
+      observation_sources: 3d_map
+      3d_map:
+         sensor_frame: lidar_link
+         data_type: PointCloud2
+         topic: /velodyne_points
+         marking: true
+         clearing: true
+         min_obstacle_height: 1.0
+         max_obstacle_height: 5.0
+         obstacle_range: 40.0
+         raytrace_range: 40.0
+   inflation_layer:
+      inflation_radius: 0.55
+      cost_scaling_factor: 10.0
+
+   global_frame: map
+   robot_base_frame: base_link
+   update_frequency: 5.0
+   publish_frequency: 5.0
+   rolling_window: true
+   width: 40.0
+   height: 40.0
+   resolution: 0.1
+   transform_tolerance: 10.0

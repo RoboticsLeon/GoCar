@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<launch>
+
+
+    <include file="$(find go_car_slam)/launch/hdl_graph_slam.launch"/>
+
+    <node name="cmd_vel_to_cmd_car" pkg="go_car_nav" type="cmd_vel_to_cmd_car" output="screen"/>
+    <!-- Defining parameters for move_base node -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find go_car_nav)/config/move_base_params.yaml" command="load"/>
+        <rosparam file="$(find go_car_nav)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find go_car_nav)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find go_car_nav)/config/base_local_planner_params.yaml" command="load" />
+    </node>
+
+</launch>
