@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <!-- Params -->
-    <rosparam file="$(find go_car_low_level_control)/config/gazebo_joints_controllers_params.yaml" command="load"/>
-
-</launch>

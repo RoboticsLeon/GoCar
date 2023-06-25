@@ -19,7 +19,7 @@ void AckermannControlPlugin::Load(gazebo::physics::ModelPtr model,
   getControllerParams();
   _cmdCarSub = _nh.subscribe("/cmd_car", 10,
                              &AckermannControlPlugin::cmdCarSubCallback, this);
-  _carJointForces = _nh.advertise<go_car_low_level_control::car_joint_forces>(
+  _carJointForces = _nh.advertise<go_car_gazebo::car_joint_forces>(
       "/go_car/joint_forces", 10);
 
   // Module
@@ -41,7 +41,7 @@ void AckermannControlPlugin::OnUpdate() {
   _leftSteeringColumnJointController->Update();
   _rightTractionWheelJointController->Update();
   _leftTractionWheelJointController->Update();
-  go_car_low_level_control::car_joint_forces msg;
+  go_car_gazebo::car_joint_forces msg;
   msg.right_steering_column =
       _model->GetJoint(_right_steering_joint_name)->GetForce(0);
   msg.left_steering_column =

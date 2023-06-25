@@ -7,7 +7,7 @@
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/PhysicsTypes.hh>
 
-#include "go_car_low_level_control/car_joint_forces.h"
+#include "go_car_gazebo/car_joint_forces.h"
 #include "go_car_manual_control/car_control_command.h"
 #include <ros/ros.h>
 
