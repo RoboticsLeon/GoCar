@@ -12,7 +12,7 @@
   <depend>geometry_msgs</depend>
   <depend>go_car_manual_control</depend>
   <exec_depend>hdl_graph_slam</exec_depend>
-  <exec_depend>dwa_local_planner</exec_depend>
+  <exec_depend>teb_local_planner</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

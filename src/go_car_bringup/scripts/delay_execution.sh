@@ -8,9 +8,13 @@
 # 1-> Seconds to wait
 # 2-> Package name where to find launch file
 # 3-> Launch file name
-# 4-> Arguments
+# 4-> Output mode
 
 echo "Preloading..."
 sleep $1
 echo "Preload completed!"
-roslaunch $2 $3 $4
+if [[ "$4" == "silent" ]]; then
+    roslaunch $2 $3 2>&1
+else
+    roslaunch $2 $3
+fi

@@ -22,10 +22,10 @@ git submodule update --init --recursive
 
 ## Execution
 ```
-roslaunch go_car_bringup start_simulation.launch manual_control_type:=keyboard world_name:=city_v2 details:=quality rviz_visualization:=true
+roslaunch go_car_bringup start_simulation.launch control_type:=keyboard world_name:=city_v2 details:=quality rviz_visualization:=true
 ```
 Params:
-+ manual_control_type: keyboard/gamepad
++ control_type: keyboard/gamepad
 + world_name: empty/city_v1/city_v2
 + details: quality/performance
 + rviz_visualization: true/false

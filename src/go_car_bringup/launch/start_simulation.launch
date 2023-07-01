@@ -14,11 +14,11 @@
         <arg name="car_model" value="$(arg car_model)"/>
     </include>
 
-    <node name="hdl_graph_slam_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="20 go_car_nav hdl_graph_slam.launch" output="screen"/>
+    <node name="hdl_graph_slam_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="15 go_car_nav hdl_graph_slam.launch silent" output="log"/>
 
     <group unless="$(eval control_type == 'autonomous')">
         <include file="$(find go_car_manual_control)/launch/manual_control.launch">
-            <arg name="type" value="$(arg manual_control_type)"/>
+            <arg name="type" value="$(arg control_type)"/>
         </include>
     </group>
     <group if="$(eval control_type == 'autonomous')">
@@ -26,7 +26,7 @@
     </group>
 
     <group if="$(arg rviz_visualization)">
-        <node name="rviz_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="20 go_car_bringup open_rviz.launch" output="screen"/>
+        <node name="rviz_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="30 go_car_bringup open_rviz.launch" output="screen"/>
     </group>
 
 </launch>

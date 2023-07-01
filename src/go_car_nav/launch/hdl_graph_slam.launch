@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <launch>
 
-    <node pkg="nodelet" type="nodelet" name="velodyne_nodelet_manager" args="manager" output="screen"/>
+    <node pkg="nodelet" type="nodelet" name="velodyne_nodelet_manager" args="manager" output="log"/>
 
     <!-- prefiltering_nodelet -->
-    <node pkg="nodelet" type="nodelet" name="prefiltering_nodelet" args="load hdl_graph_slam/PrefilteringNodelet velodyne_nodelet_manager">
+    <node pkg="nodelet" type="nodelet" name="prefiltering_nodelet" args="load hdl_graph_slam/PrefilteringNodelet velodyne_nodelet_manager" output="log">
 
         <param name="base_link_frame" value="base_link" />
         <!-- distance filter -->
         <param name="use_distance_filter" value="false" />
         <param name="distance_near_thresh" value="1.0" />
-        <param name="distance_far_thresh" value="130.0" />
+        <param name="distance_far_thresh" value="80.0" />
         <!-- NONE, VOXELGRID, or APPROX_VOXELGRID -->
         <param name="downsample_method" value="VOXELGRID" />
-        <param name="downsample_resolution" value="0.1" />
+        <param name="downsample_resolution" value="0.25" />
         <!-- NONE, RADIUS, or STATISTICAL -->
         <param name="outlier_removal_method" value="NONE" />
         <param name="statistical_mean_k" value="30" />
@@ -23,7 +23,7 @@
     </node>
 
     <!-- scan_matching_odometry_nodelet -->
-    <node pkg="nodelet" type="nodelet" name="scan_matching_odometry_nodelet" args="load hdl_graph_slam/ScanMatchingOdometryNodelet velodyne_nodelet_manager">
+    <node pkg="nodelet" type="nodelet" name="scan_matching_odometry_nodelet" args="load hdl_graph_slam/ScanMatchingOdometryNodelet velodyne_nodelet_manager" output="log">
         <param name="points_topic" value="/velodyne_points" />
         <!-- published_odom_topic -->
         <param name="published_odom_topic" value="/odom" />
@@ -35,7 +35,7 @@
         <param name="max_acceptable_trans" value="1.0" />
         <param name="max_acceptable_angle" value="1.0" />
         <param name="downsample_method" value="NONE" />
-        <param name="downsample_resolution" value="0.1" />
+        <param name="downsample_resolution" value="0.25" />
         <!-- ICP, GICP, NDT, GICP_OMP, NDT_OMP, FAST_GICP(recommended), or FAST_VGICP -->
         <param name="registration_method" value="FAST_GICP" />
         <param name="reg_num_threads" value="0" />
@@ -50,7 +50,7 @@
     </node>
 
     <!-- floor_detection_nodelet -->
-    <node pkg="nodelet" type="nodelet" name="floor_detection_nodelet" args="load hdl_graph_slam/FloorDetectionNodelet velodyne_nodelet_manager">
+    <node pkg="nodelet" type="nodelet" name="floor_detection_nodelet" args="load hdl_graph_slam/FloorDetectionNodelet velodyne_nodelet_manager" output="log">
         <param name="points_topic" value="/velodyne_points" />
         <param name="tilt_deg" value="0.0" />
         <param name="sensor_height" value="0.9" />
@@ -61,7 +61,7 @@
     </node>
 
     <!-- hdl_graph_slam_nodelet -->
-    <node pkg="nodelet" type="nodelet" name="hdl_graph_slam_nodelet" args="load hdl_graph_slam/HdlGraphSlamNodelet velodyne_nodelet_manager">
+    <node pkg="nodelet" type="nodelet" name="hdl_graph_slam_nodelet" args="load hdl_graph_slam/HdlGraphSlamNodelet velodyne_nodelet_manager" output="log">
         <remap from="gpsimu_driver/imu_data" to="/imu"/>
         <param name="points_topic" value="/velodyne_points" />
         <!-- published_odom_topic -->
@@ -134,10 +134,10 @@
         <!-- update params -->
         <param name="graph_update_interval" value="1.0" />
         <param name="map_cloud_update_interval" value="1.0" />
-        <param name="map_cloud_resolution" value="0.1" />
+        <param name="map_cloud_resolution" value="0.5" />
     </node>
 
-    <node pkg="hdl_graph_slam" type="map2odom_publisher.py" name="map2odom_publisher">
+    <node pkg="hdl_graph_slam" type="map2odom_publisher.py" name="map2odom_publisher" output="log">
         <param name="map_frame_id" value="map" />
         <param name="odom_frame_id" value="odom" />
     </node>
