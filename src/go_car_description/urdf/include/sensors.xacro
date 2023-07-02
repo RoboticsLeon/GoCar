@@ -3,7 +3,7 @@
 <robot xmlns:xacro="gazebo_sensors">
 
     <gazebo reference="camera_link">
-        <sensor type="camera" name="camera1">
+        <sensor type="camera" name="camera">
             <update_rate>30.0</update_rate>
             <camera name="head">
                 <horizontal_fov>1.3962634</horizontal_fov>
@@ -46,40 +46,40 @@
         <sensor type="gpu_ray" name="HDL32E">
             <pose>0 0 0 0 0 0</pose>
             <visualize>false</visualize>
-            <update_rate>10</update_rate>
+            <update_rate>5</update_rate>
             <ray>
                 <scan>
                     <horizontal>
-                        <samples>720</samples>
+                        <samples>300</samples>                        <!-- Real sensor will have up to 1200 -->
                         <resolution>1</resolution>
-                        <min_angle>-3.14</min_angle>
-                        <max_angle>3.14</max_angle>
+                        <min_angle>${-pi}</min_angle>
+                        <max_angle>${pi}</max_angle>
                     </horizontal>
                     <vertical>
-                        <samples>32</samples>
+                        <samples>40</samples>
                         <resolution>1</resolution>
-                        <min_angle>-${30.67*1.570796/180.0}</min_angle>
-                        <max_angle> ${10.67*1.570796/180.0}</max_angle>
+                        <min_angle>${-30*pi/180}</min_angle>
+                        <max_angle>${10*pi/180}</max_angle>
                     </vertical>
                 </scan>
                 <range>
-                    <min>1.0</min>
-                    <max>130.0</max>
-                    <resolution>0.001</resolution>
+                    <min>3.0</min>
+                    <max>100.0</max>
+                    <resolution>0.005</resolution>
                 </range>
                 <noise>
                     <type>gaussian</type>
                     <mean>0.0</mean>
-                    <stddev>0.008</stddev>
+                    <stddev>0.02</stddev>
                 </noise>
             </ray>
             <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_gpu_laser.so">
                 <topicName>velodyne_points</topicName>
                 <frameName>lidar_link</frameName>
                 <organize_cloud>false</organize_cloud>
-                <min_range>1.0</min_range>
-                <max_range>130.0</max_range>
-                <gaussianNoise>0.008</gaussianNoise>
+                <min_range>3.0</min_range>
+                <max_range>100.0</max_range>
+                <gaussianNoise>0.02</gaussianNoise>
             </plugin>
         </sensor>
     </gazebo>

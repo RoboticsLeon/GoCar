@@ -56,4 +56,8 @@
     <xacro:property name="tyre_radius" value="0.356"/>
     <xacro:property name="tyre_width" value="0.229"/>
 
+    <!-- Sensors location setup params -->
+    <xacro:property name="lidar_height" value="1.0"/>
+    <xacro:property name="camera_height" value="0.625"/>
+
 </robot>
