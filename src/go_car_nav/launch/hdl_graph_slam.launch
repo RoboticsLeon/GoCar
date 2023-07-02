@@ -63,6 +63,7 @@
     <!-- hdl_graph_slam_nodelet -->
     <node pkg="nodelet" type="nodelet" name="hdl_graph_slam_nodelet" args="load hdl_graph_slam/HdlGraphSlamNodelet velodyne_nodelet_manager" output="log">
         <remap from="gpsimu_driver/imu_data" to="/imu"/>
+        <remap from="gps/navsat" to="/gps/coordinates"/>
         <param name="points_topic" value="/velodyne_points" />
         <!-- published_odom_topic -->
         <param name="published_odom_topic" value="/odom" />
@@ -74,7 +75,7 @@
         <param name="g2o_solver_type" value="lm_var_cholmod" />
         <param name="g2o_solver_num_iterations" value="512" />
         <!-- constraint switches -->
-        <param name="enable_gps" value="false" />
+        <param name="enable_gps" value="true" />
         <param name="enable_imu_acceleration" value="false" />
         <param name="enable_imu_orientation" value="false" />
         <!-- keyframe registration params -->
@@ -106,8 +107,8 @@
         <!-- GPS -->
         <param name="gps_edge_robust_kernel" value="NONE" />
         <param name="gps_edge_robust_kernel_size" value="1.0" />
-        <param name="gps_edge_stddev_xy" value="20.0" />
-        <param name="gps_edge_stddev_z" value="5.0" />
+        <param name="gps_edge_stddev_xy" value="0.0" />
+        <param name="gps_edge_stddev_z" value="0.0" />
         <!-- IMU orientation -->
         <param name="imu_orientation_edge_robust_kernel" value="NONE" />
         <param name="imu_orientation_edge_stddev" value="1.0" />

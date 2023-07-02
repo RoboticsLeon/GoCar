@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
-<robot name="test_robot"
-  xmlns:xacro="test">
+<robot name="go_car"
+  xmlns:xacro="go_car">
 
   <xacro:include filename="$(find go_car_description)/urdf/include/params.xacro"/>
   <xacro:include filename="$(find go_car_description)/urdf/include/snippets.xacro"/>
