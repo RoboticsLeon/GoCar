@@ -7,6 +7,7 @@
     <!-- control_type options: keyboard, gamepad, autonomous -->
     <arg name="control_type" default="keyboard"/>
     <arg name="rviz_visualization" default="false"/>
+    <arg name="real_time_telemetry" default="false"/>
 
     <include file="$(find go_car_gazebo)/launch/load_gazebo_simulation.launch">
         <arg name="world" value="$(arg world_name)"/>
@@ -27,6 +28,10 @@
 
     <group if="$(arg rviz_visualization)">
         <node name="rviz_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="30 go_car_bringup open_rviz.launch" output="screen"/>
+    </group>
+
+    <group if="$(arg real_time_telemetry)">
+        <node name="rt_telemetry_plotter" pkg="go_car_bringup" type="delay_execution.sh" args="30 go_car_bringup open_plotjugger.launch" output="screen"/>
     </group>
 
 </launch>
