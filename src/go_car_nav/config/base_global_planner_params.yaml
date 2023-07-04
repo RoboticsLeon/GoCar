@@ -1,0 +1,8 @@
+GlobalPlanner:
+  use_dijkstra: false
+  outline_map: false
+  use_grid_path: true
+  orientation_mode: 0 #None
+  cost_factor: 1.0
+  lethal_cost: 100
+  neutral_cost: 20

@@ -1,29 +1,36 @@
 local_costmap:
+   footprint: "[ [3.25, 1.5], [3.25, -1.5], [-2.5, -1.5], [-2.5, 1.5] ]"
    plugins:
+      - {name: sonar, type: "range_sensor_layer::RangeSensorLayer"}
       - {name: laser_sensor_layer, type: "costmap_2d::VoxelLayer"}
       - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+   sonar:
+      topics: ['/range_sensor/front', '/range_sensor/left', '/range_sensor/right', '/range_sensor/back']
+      clear_max_reading: true
    laser_sensor_layer:
-      observation_sources: 3d_map
-      3d_map:
+      observation_sources: velodyne_sensor
+      velodyne_sensor:
          sensor_frame: lidar_link
          data_type: PointCloud2
          topic: /velodyne_points
          marking: true
          clearing: true
-         min_obstacle_height: -0.5
-         max_obstacle_height: 1.0
+         min_obstacle_height: 0.25
+         max_obstacle_height: 3.0
          obstacle_range: 20.0
          raytrace_range: 20.0
    inflation_layer:
-      inflation_radius: 5.0
-      cost_scaling_factor: 0.2
+      inflation_radius: 3.5
+      cost_scaling_factor: 0.5
 
    global_frame: map
-   robot_base_frame: base_link
+   robot_base_frame: base_footprint_link
    update_frequency: 2.0
    publish_frequency: 2.0
    rolling_window: true
    width: 20.0
    height: 20.0
-   resolution: 0.5
+   resolution: 0.2
    transform_tolerance: 10.0
+   footprint: [ [3.25, 1.5], [3.25, -1.5], [-2.5, -1.5], [-2.5, 1.5] ]
+   robot_radius: 0.0

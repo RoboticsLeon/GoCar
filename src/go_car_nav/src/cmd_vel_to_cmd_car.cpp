@@ -19,7 +19,8 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "cmd_vel_converter");
   ros::NodeHandle nh;
 
-  ros::Subscriber cmd_vel_sub = nh.subscribe("cmd_vel", 10, cmdVelCallback);
+  ros::Subscriber cmd_vel_sub =
+      nh.subscribe("cmd_vel_quit", 10, cmdVelCallback);
   cmd_car_pub =
       nh.advertise<go_car_manual_control::car_control_command>("cmd_car", 10);
 

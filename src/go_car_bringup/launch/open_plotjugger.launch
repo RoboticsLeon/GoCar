@@ -1,4 +1,4 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <launch>
-    <node name="rt_telemetry_node" type="plotjugger" pkg="plotjugger" args="--layout $(find go_car_bringup)/config/speed_steering_control_plots.xml" />
+    <node name="rt_telemetry_node" type="plotjuggler" pkg="plotjuggler" args="--layout $(find go_car_bringup)/config/speed_steering_control_plots.xml" />
 </launch>

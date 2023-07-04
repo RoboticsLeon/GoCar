@@ -22,3 +22,6 @@
 [submodule "src/external_packages/gflags_catkin"]
 	path = src/external_packages/gflags_catkin
 	url = https://github.com/ethz-asl/gflags_catkin.git
+[submodule "src/external_packages/navigation_layers"]
+	path = src/external_packages/navigation_layers
+	url = https://github.com/DLu/navigation_layers.git

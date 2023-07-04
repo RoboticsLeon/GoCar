@@ -1,4 +1,4 @@
-base_global_planner: navfn/NavfnROS
+base_global_planner: global_planner/GlobalPlanner
 base_local_planner: teb_local_planner/TebLocalPlannerROS
 recovery_behaviors: [{name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}, {name: rotate_recovery, type: rotate_recovery/RotateRecovery}, {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}]
 controller_frequency: 5.0
@@ -10,5 +10,5 @@ clearing_rotation_allowed: true
 shutdown_costmaps: false
 oscillation_timeout: 0.0
 oscillation_distance: 0.5
-planner_frequency: 0.25
+planner_frequency: 0.5
 max_planning_retries: 10

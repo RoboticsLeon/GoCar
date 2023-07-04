@@ -6,18 +6,16 @@
     <!-- prefiltering_nodelet -->
     <node pkg="nodelet" type="nodelet" name="prefiltering_nodelet" args="load hdl_graph_slam/PrefilteringNodelet velodyne_nodelet_manager" output="log">
 
-        <param name="base_link_frame" value="base_link" />
+        <param name="base_link_frame" value="base_footprint_link" />
         <!-- distance filter -->
-        <param name="use_distance_filter" value="false" />
-        <param name="distance_near_thresh" value="1.0" />
-        <param name="distance_far_thresh" value="80.0" />
+        <param name="use_distance_filter" value="true" />
+        <param name="distance_near_thresh" value="5.0" />
+        <param name="distance_far_thresh" value="100.0" />
         <!-- NONE, VOXELGRID, or APPROX_VOXELGRID -->
         <param name="downsample_method" value="VOXELGRID" />
         <param name="downsample_resolution" value="0.25" />
         <!-- NONE, RADIUS, or STATISTICAL -->
-        <param name="outlier_removal_method" value="NONE" />
-        <param name="statistical_mean_k" value="30" />
-        <param name="statistical_stddev" value="1.2" />
+        <param name="outlier_removal_method" value="RADIUS" />
         <param name="radius_radius" value="0.5" />
         <param name="radius_min_neighbors" value="2" />
     </node>
@@ -34,8 +32,6 @@
         <param name="transform_thresholding" value="false" />
         <param name="max_acceptable_trans" value="1.0" />
         <param name="max_acceptable_angle" value="1.0" />
-        <param name="downsample_method" value="NONE" />
-        <param name="downsample_resolution" value="0.25" />
         <!-- ICP, GICP, NDT, GICP_OMP, NDT_OMP, FAST_GICP(recommended), or FAST_VGICP -->
         <param name="registration_method" value="FAST_GICP" />
         <param name="reg_num_threads" value="0" />
@@ -53,9 +49,10 @@
     <node pkg="nodelet" type="nodelet" name="floor_detection_nodelet" args="load hdl_graph_slam/FloorDetectionNodelet velodyne_nodelet_manager" output="log">
         <param name="points_topic" value="/velodyne_points" />
         <param name="tilt_deg" value="0.0" />
-        <param name="sensor_height" value="0.9" />
-        <param name="height_clip_range" value="1.0" />
-        <param name="floor_pts_thresh" value="200" />
+        <param name="sensor_height" value="1.85" />
+        <param name="height_clip_range" value="3.0" />
+        <param name="floor_pts_thresh" value="512" />
+        <param name="floor_normal_thresh" value="10.0"/>
         <param name="use_normal_filtering" value="true" />
         <param name="normal_filter_thresh" value="20.0" />
     </node>
@@ -75,7 +72,7 @@
         <param name="g2o_solver_type" value="lm_var_cholmod" />
         <param name="g2o_solver_num_iterations" value="512" />
         <!-- constraint switches -->
-        <param name="enable_gps" value="true" />
+        <param name="enable_gps" value="false" />
         <param name="enable_imu_acceleration" value="false" />
         <param name="enable_imu_orientation" value="false" />
         <!-- keyframe registration params -->
@@ -106,22 +103,22 @@
         <!-- edge params -->
         <!-- GPS -->
         <param name="gps_edge_robust_kernel" value="NONE" />
-        <param name="gps_edge_robust_kernel_size" value="1.0" />
-        <param name="gps_edge_stddev_xy" value="0.0" />
-        <param name="gps_edge_stddev_z" value="0.0" />
+        <param name="gps_edge_robust_kernel_size" value="10.0" />
+        <param name="gps_edge_stddev_xy" value="20.0" />
+        <param name="gps_edge_stddev_z" value="20.0" />
         <!-- IMU orientation -->
         <param name="imu_orientation_edge_robust_kernel" value="NONE" />
-        <param name="imu_orientation_edge_stddev" value="1.0" />
+        <param name="imu_orientation_edge_stddev" value="5.0" />
         <!-- IMU acceleration (gravity vector) -->
         <param name="imu_acceleration_edge_robust_kernel" value="NONE" />
-        <param name="imu_acceleration_edge_stddev" value="1.0" />
+        <param name="imu_acceleration_edge_stddev" value="5.0" />
         <!-- ground plane -->
         <param name="floor_edge_robust_kernel" value="NONE" />
         <param name="floor_edge_stddev" value="10.0" />
         <!-- scan matching -->
         <!-- robust kernels: NONE, Cauchy, DCS, Fair, GemanMcClure, Huber, PseudoHuber, Saturated, Tukey, Welsch -->
         <param name="odometry_edge_robust_kernel" value="NONE" />
-        <param name="odometry_edge_robust_kernel_size" value="1.0" />
+        <param name="odometry_edge_robust_kernel_size" value="10.0" />
         <param name="loop_closure_edge_robust_kernel" value="Huber" />
         <param name="loop_closure_edge_robust_kernel_size" value="1.0" />
         <param name="use_const_inf_matrix" value="false" />

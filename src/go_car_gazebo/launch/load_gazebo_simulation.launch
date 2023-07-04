@@ -19,7 +19,7 @@
     </include>
 
     <param name="robot_description" command="$(find xacro)/xacro '$(find go_car_description)/urdf/go_car_model.xacro' robot_name:='go_car' details:=$(arg details) car_model:=$(arg car_model)"/>
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x 37.75 -y -23.1 -z 0.85 -R 0 -P 0 -Y -1.54"/>
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf -model go_car -param robot_description -x 50.0 -y 74.1 -z 0.85 -R 0 -P 0 -Y -1.56"/>
 
     <rosparam file="$(find go_car_gazebo)/config/gazebo_joints_controllers_params.yaml" command="load"/>
 
@@ -27,7 +27,7 @@
         <remap from="joint_states" to="/go_car/joint_states" />
     </node>
 
-    <node name="world_frame_publisher" pkg="tf" type="static_transform_publisher" args="37.75 -23.1 0.0 -1.54 0 0 world map 10"/>
+    <node name="world_frame_publisher" pkg="tf" type="static_transform_publisher" args="50.0 74.1 0.0 -1.56 0 0 world map 1000"/>
     <node pkg="go_car_gazebo" type="ground_truth_tf_publisher" name="go_car_gazebo_frame_publisher"/>
 
 </launch>

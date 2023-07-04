@@ -9,11 +9,10 @@
   <xacro:include filename="$(find go_car_description)/urdf/include/sensors.xacro"/>
 
   <!-- First tf level -->
-  <link name="base_link"/>
   <joint name="base_to_chassis" type="fixed">
-    <parent link="base_link"/>
+    <parent link="base_footprint_link"/>
     <child link="chassis_link"/>
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.84" rpy="0.0 0.0 0.0"/>
   </joint>
   <joint name="chassis_to_left_steering_column" type="revolute">
     <parent link="chassis_link"/>
@@ -76,6 +75,26 @@
     <parent link="chassis_link"/>
     <child link="lidar_link"/>
     <origin xyz="0.0 0.0 ${lidar_height}" rpy="0.0 0.0 0.0"/>
+  </joint>
+  <joint name="chassis_to_back_ultrasonic" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="back_ultrasonic_link"/>
+    <origin xyz="${-chassis_length/2} 0.0 0.0" rpy="0.0 0.0 ${pi}"/>
+  </joint>
+  <joint name="chassis_to_right_ultrasonic" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="right_ultrasonic_link"/>
+    <origin xyz="0.0 ${-chassis_width/2} 0.0" rpy="0.0 0.0 ${-pi/2}"/>
+  </joint>
+  <joint name="chassis_to_left_ultrasonic" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="left_ultrasonic_link"/>
+    <origin xyz="0.0 ${chassis_width/2} 0.0" rpy="0.0 0.0 ${pi/2}"/>
+  </joint>
+  <joint name="chassis_to_front_ultrasonic" type="fixed">
+    <parent link="chassis_link"/>
+    <child link="front_ultrasonic_link"/>
+    <origin xyz="${chassis_length/2+0.35} 0.0 0.0" rpy="0.0 0.0 0.0"/>
   </joint>
 
   <!-- Gazebo -->
