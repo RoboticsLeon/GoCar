@@ -15,6 +15,8 @@
         <arg name="car_model" value="$(arg car_model)"/>
     </include>
 
+    <node name="map_publisher_2d" pkg="map_server" type="map_server" args="$(find go_car_gazebo)/maps/2d_scanned_map.yaml"/>
+
     <node name="hdl_graph_slam_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="20 go_car_nav hdl_graph_slam.launch silent" output="log"/>
 
     <group unless="$(eval control_type == 'autonomous')">
@@ -22,7 +24,7 @@
             <arg name="type" value="$(arg control_type)"/>
         </include>
     </group>
-    <group if="$(eval control_type == 'keyboard')">
+    <group if="$(eval control_type == 'autonomous')">
         <node name="move_base_launch_delayer" pkg="go_car_bringup" type="delay_execution.sh" args="25 go_car_nav move_base.launch" output="screen"/>
     </group>
 

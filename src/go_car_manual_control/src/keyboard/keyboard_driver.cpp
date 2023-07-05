@@ -2,6 +2,26 @@
 
 namespace keyboard_driver {
 
+void operator++(Gears &gear, int) {
+  int newGear;
+  if (gear != Gears::Fourth) {
+    newGear = static_cast<int>(gear) + 1;
+  } else {
+    throw std::runtime_error("[controller_adapter]: Invalid gear value");
+  }
+  gear = static_cast<Gears>(newGear);
+}
+
+void operator--(Gears &gear, int) {
+  int newGear;
+  if (gear != Gears::Reverse) {
+    newGear = static_cast<int>(gear) - 1;
+  } else {
+    throw std::runtime_error("[controller_adapter]: Invalid gear value");
+  }
+  gear = static_cast<Gears>(newGear);
+}
+
 std::vector<std::string> getKeyboardEventFile() {
   std::string virtualInputDevicesFile_path = "/proc/bus/input/devices";
   std::string readLine;
@@ -94,6 +114,66 @@ keys getKeyStatus(int virtualKeyboardEventFileDescriptor) {
           }
           break;
 
+        case KEY_SLASH: // for spanish keyboard configuration this key is -
+          if (event->value == 1) {
+            std::cout << "Tecla - pulsada" << std::endl;
+            KeysStatus.minusKey = key_status::pressed;
+          } else if (event->value == 0) {
+            std::cout << "Tecla - soltada" << std::endl;
+            KeysStatus.minusKey = key_status::non_pressed;
+          }
+          break;
+
+        case KEY_0:
+          if (event->value == 1) {
+            std::cout << "Tecla 0 pulsada" << std::endl;
+            KeysStatus.numberZeroKey = key_status::pressed;
+          } else if (event->value == 0) {
+            std::cout << "Tecla 0 soltada" << std::endl;
+            KeysStatus.numberZeroKey = key_status::non_pressed;
+          }
+          break;
+
+        case KEY_1:
+          if (event->value == 1) {
+            std::cout << "Tecla 1 pulsada" << std::endl;
+            KeysStatus.numberOneKey = key_status::pressed;
+          } else if (event->value == 0) {
+            std::cout << "Tecla 1 soltada" << std::endl;
+            KeysStatus.numberOneKey = key_status::non_pressed;
+          }
+          break;
+
+        case KEY_2:
+          if (event->value == 1) {
+            std::cout << "Tecla 2 pulsada" << std::endl;
+            KeysStatus.numberTwoKey = key_status::pressed;
+          } else if (event->value == 0) {
+            std::cout << "Tecla 2 soltada" << std::endl;
+            KeysStatus.numberTwoKey = key_status::non_pressed;
+          }
+          break;
+
+        case KEY_3:
+          if (event->value == 1) {
+            std::cout << "Tecla 3 pulsada" << std::endl;
+            KeysStatus.numberThreeKey = key_status::pressed;
+          } else if (event->value == 0) {
+            std::cout << "Tecla 3 soltada" << std::endl;
+            KeysStatus.numberThreeKey = key_status::non_pressed;
+          }
+          break;
+
+        case KEY_4:
+          if (event->value == 1) {
+            std::cout << "Tecla 4 pulsada" << std::endl;
+            KeysStatus.numberFourKey = key_status::pressed;
+          } else if (event->value == 0) {
+            std::cout << "Tecla 4 soltada" << std::endl;
+            KeysStatus.numberFourKey = key_status::non_pressed;
+          }
+          break;
+
         default:
           std::cout << "Tecla no valida pulsada" << std::endl;
           break;
@@ -110,15 +190,30 @@ keys getKeyStatus(int virtualKeyboardEventFileDescriptor) {
 std::pair<double, double> calculateCarCmd(keys keysStatus) {
   double cmdSpeed{0.0};
   double cmdSteering{0.0};
+  static Gears current_gear{Gears::Neutral};
 
   if ((keysStatus.upArrowKey == key_status::pressed) &&
       (keysStatus.downArrowKey == key_status::non_pressed)) {
-    cmdSpeed = MAX_SPEED;
+    if ((current_gear != Gears::Neutral) && (current_gear != Gears::Reverse)) {
+      cmdSpeed = (1 + static_cast<double>(current_gear)) * (MAX_SPEED / 4);
+    } else {
+      cmdSpeed = 0.0;
+    }
   } else if ((keysStatus.upArrowKey == key_status::non_pressed) &&
              (keysStatus.downArrowKey == key_status::pressed)) {
-    cmdSpeed = -MAX_SPEED;
+    if (current_gear == Gears::Reverse) {
+      cmdSpeed = -(MAX_SPEED / 4);
+    } else if (current_gear == Gears::Neutral) {
+      cmdSpeed = 0.0;
+    } else {
+      cmdSpeed = (-1 + static_cast<double>(current_gear)) * (MAX_SPEED / 4);
+    }
   } else {
-    cmdSpeed = 0.0;
+    if (current_gear == Gears::Reverse) {
+      cmdSpeed = 0.0;
+    } else {
+      cmdSpeed = static_cast<double>(current_gear) * (MAX_SPEED / 4);
+    }
   }
 
   if ((keysStatus.leftArrowKey == key_status::pressed) &&
@@ -131,7 +226,21 @@ std::pair<double, double> calculateCarCmd(keys keysStatus) {
     cmdSteering = 0.0;
   }
 
+  if (keysStatus.minusKey == key_status::pressed) {
+    current_gear = Gears::Reverse;
+  } else if (keysStatus.numberZeroKey == key_status::pressed) {
+    current_gear = Gears::Neutral;
+  } else if (keysStatus.numberOneKey == key_status::pressed) {
+    current_gear = Gears::First;
+  } else if (keysStatus.numberTwoKey == key_status::pressed) {
+    current_gear = Gears::Second;
+  } else if (keysStatus.numberThreeKey == key_status::pressed) {
+    current_gear = Gears::Third;
+  } else if (keysStatus.numberFourKey == key_status::pressed) {
+    current_gear = Gears::Fourth;
+  }
+
   return std::pair<double, double>(cmdSpeed, cmdSteering);
-}
+} // namespace keyboard_driver
 
 } // end namespace keyboard_driver

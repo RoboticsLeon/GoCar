@@ -8,7 +8,7 @@
 namespace controller_adapter {
 
 constexpr double MAX_STEERING_ANGLE = 0.8;
-constexpr double MAX_SPEED = 100;
+constexpr double MAX_SPEED = 20.0;
 
 enum class Gears {
   Reverse = -1,
@@ -17,8 +17,6 @@ enum class Gears {
   Second = 2,
   Third = 3,
   Fourth = 4,
-  Fifth = 5,
-  Sixth = 6
 };
 
 // Addition operator overload

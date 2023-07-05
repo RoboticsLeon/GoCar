@@ -15,7 +15,7 @@ TebLocalPlannerROS:
  feasibility_check_lookahead_distance: 10.0
  exact_arc_length: False
  publish_feedback: False
- prevent_look_ahead_poses_near_goal: 2.0
+ prevent_look_ahead_poses_near_goal: 5.0
 
  # ViaPoints
  global_plan_viapoint_sep: 2.0
@@ -27,29 +27,29 @@ TebLocalPlannerROS:
  max_vel_y: 0.0
  max_vel_theta: 0.2
  acc_lim_x: 6.0
- acc_lim_theta: 0.1
+ acc_lim_theta: 0.2
  is_footprint_dynamic: True
  use_proportional_saturation: False
  transform_tolerance: 10.0
 
  ## Robot/Carlike ##
- min_turning_radius: 7.0
+ min_turning_radius: 6.0
  wheelbase: 2.8
  cmd_angle_instead_rotvel: True
  footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
    type: "polygon"
-   vertices: [ [3.25, 1.5], [3.25, -1.5], [-2.5, -1.5], [-2.5, 1.5] ] # for type "polygon"
+   vertices: [ [3.25, 1.5], [3.25, -1.5], [-2.5, -1.5], [-2.5, 1.5] ]
 
  # GoalTolerance
     
  xy_goal_tolerance: 0.5
- yaw_goal_tolerance: 0.4
- free_goal_vel: False
- complete_global_plan: True
+ yaw_goal_tolerance: 0.2
+ free_goal_vel: True
+ complete_global_plan: False
     
  # Obstacles
     
- min_obstacle_dist: 0.1
+ min_obstacle_dist: 0.5
  inflation_dist: 0.5
  dynamic_obstacle_inflation_dist: 0.75
  include_dynamic_obstacles: True
@@ -73,8 +73,8 @@ TebLocalPlannerROS:
  weight_max_vel_theta: 0.1
  weight_acc_lim_x: 10
  weight_acc_lim_theta: 0.1
- weight_kinematics_nh: 1000
- weight_kinematics_forward_drive: 1000
+ weight_kinematics_nh: 10000
+ weight_kinematics_forward_drive: 10000
  weight_kinematics_turning_radius: 10
  weight_optimaltime: 100 # must be > 0
  weight_shortest_path: 10
@@ -85,6 +85,7 @@ TebLocalPlannerROS:
  weight_viapoint: 1
  weight_adapt_factor: 2
  obstacle_cost_exponent: 1
+ switching_blocking_period: 10.0
 
  # Homotopy Class Planner
 
@@ -107,6 +108,9 @@ TebLocalPlannerROS:
  max_ratio_detours_duration_best_duration: 5.0
  visualize_hc_graph: False
  visualize_with_time_as_z_axis_scale: False
+
+ costmap_converter_plugin: "costmap_converter::CostmapToPolygonsDBSMCCH"
+ costmap_converter_dspin_thread: True
 
 # Recovery
  

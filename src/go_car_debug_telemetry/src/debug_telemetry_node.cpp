@@ -1,8 +1,22 @@
-#include <geometry_msgs/Twist.h>
-#include <go_car_manual_control/car_control_command.h>
 #include <ros/ros.h>
 
-ros::Publisher cmd_car_pub;
+ros::Subscriber cmd_car_pub;
+ros::
+
+    float speed = 0;
+float steering_angle = 0;
+
+struct ground_truth_coordinate {
+  float gt_x_coordinate = 0;
+  float gt_y_coordinate = 0;
+  float gt_z_coordinate = 0;
+};
+
+struct estimated_localization_coordinate {
+  float estimated_localization_x_coordinate = 0;
+  float estimated_localization_y_coordinate = 0;
+  float estimated_localization_z_coordinate = 0;
+};
 
 void cmdVelCallback(const geometry_msgs::Twist::ConstPtr &cmd_vel_msg) {
   // Create a custom message of type cmd_car
@@ -16,7 +30,7 @@ void cmdVelCallback(const geometry_msgs::Twist::ConstPtr &cmd_vel_msg) {
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "cmd_vel_converter");
+  ros::init(argc, argv, "telemetry_node");
   ros::NodeHandle nh;
 
   ros::Subscriber cmd_vel_sub = nh.subscribe("cmd_vel", 10, cmdVelCallback);

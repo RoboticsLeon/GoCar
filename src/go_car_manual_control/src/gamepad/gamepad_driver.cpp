@@ -4,7 +4,7 @@ namespace controller_adapter {
 
 void operator++(Gears &gear, int) {
   int newGear;
-  if (gear != Gears::Sixth) {
+  if (gear != Gears::Fourth) {
     newGear = static_cast<int>(gear) + 1;
   } else {
     throw std::runtime_error("[controller_adapter]: Invalid gear value");
@@ -30,11 +30,23 @@ controller_input_processing(const std::vector<float> &axes,
   static Gears current_gear{Gears::Neutral};
   const double desired_steering_angle =
       steering_percentage * MAX_STEERING_ANGLE;
-  const double desired_speed =
-      (throttle_percentage + static_cast<double>(current_gear)) *
-      (MAX_SPEED / 6);
+  double desired_speed = 0.0;
 
-  if ((buttons[5] == 1) && (current_gear != Gears::Sixth)) {
+  if (static_cast<double>(current_gear) >= 0) {
+    if (current_gear == Gears::Neutral)
+      desired_speed = 0.0;
+    else {
+      desired_speed =
+          (throttle_percentage + static_cast<double>(current_gear)) *
+          (MAX_SPEED / 4);
+    }
+  } else if (throttle_percentage < 0) {
+    desired_speed = throttle_percentage * (MAX_SPEED / 4);
+  } else {
+    desired_speed = 0;
+  }
+
+  if ((buttons[5] == 1) && (current_gear != Gears::Fourth)) {
     current_gear++;
     std::cout << "Marcha actual:" << static_cast<double>(current_gear)
               << std::endl;
@@ -45,6 +57,6 @@ controller_input_processing(const std::vector<float> &axes,
   }
 
   return std::make_pair(desired_steering_angle, desired_speed);
-}
+} // namespace controller_adapter
 
 } // namespace controller_adapter

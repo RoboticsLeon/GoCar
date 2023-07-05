@@ -10,11 +10,11 @@
         </node>
 
         <rosparam command="load" file="$(find go_car_manual_control)/config/gamepad_driver_params.yaml"/>
-        <node pkg="go_car_manual_control" type="gamepad_driver" name="gamepad_driver"/>
+        <node pkg="go_car_manual_control" type="gamepad_driver" name="gamepad_driver" output="screen"/>
     </group>
 
     <group if="$(eval type == 'keyboard')">
-        <node pkg="go_car_manual_control" type="keyboard_driver" name="keyboard_driver"/>
+        <node pkg="go_car_manual_control" type="keyboard_driver" name="keyboard_driver" output="screen"/>
     </group>
 
 </launch>
