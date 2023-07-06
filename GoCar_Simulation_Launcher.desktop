@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=GoCar Simulation       
+Comment=App launching simulation of GoCar
+Exec=zsh -c 'source ~/.zshrc; ; roslaunch go_car_bringup start_simulation.launch control_type:=gamepad world_name:=city details:=performance rviz_visualization:=true;'
+Icon=/home/leon/Imágenes/GoCar_logo.png
+Terminal=true
+Type=Application
