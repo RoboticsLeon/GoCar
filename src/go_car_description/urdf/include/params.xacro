@@ -3,7 +3,7 @@
 <robot xmlns:xacro="macros_xacro">
 
     <xacro:arg name="details" default="quality"/>
-    <xacro:arg name="car_model" default="lincolm"/>
+    <xacro:arg name="car_model" default="lincoln"/>
 
 
     <xacro:property name="chassis_height" value="1.3"/>
