@@ -8393,7 +8393,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>8.91656 54.0452 0 0 -0 0</pose>
+      <pose>8.91656 54.0452 0 0 -0 1.54</pose>
     </model>
     <model name='stop_light_post_0_clone'>
       <static>1</static>
@@ -8611,7 +8611,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>5.51884 56.8842 0 0 -0 0</pose>
+      <pose>-2.09356 57.0468 0 0 -0 3.126</pose>
     </model>
     <model name='stop_light_post_0_clone_0'>
       <static>1</static>
@@ -8829,7 +8829,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.83244 54.215 0 0 -0 0</pose>
+      <pose>-6.03933 46.1329 0 0 0 -1.57487</pose>
     </model>
     <model name='House 3'>
       <static>1</static>
