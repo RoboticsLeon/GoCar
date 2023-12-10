@@ -15,10 +15,6 @@ rosdep update
 cd GoCar
 ./src/go_car_bringup/scripts/setup_env.sh
 ```
-* Git submodules cloning:
-```
-git submodule update --init --recursive
-```
 
 ## Execution
 ```
